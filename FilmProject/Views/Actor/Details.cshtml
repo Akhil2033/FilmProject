@@ -1,9 +1,18 @@
-﻿@model Film_Passion_Project.Models.ActorDto
+﻿@model FilmProject.Models.ViewModels.DetailsActors
 @{
     ViewBag.Title = "Details";
 }
 
 <a href="/Actor/List">Go back to list</a>
-<h2>@Model.ActorName</h2>
-<div>Fee: @Model.ActorFee</div>
+<br />
+<a href="/Actor/Edit/@Model.SelectedActor.ActorId">Update</a>
+<h2>@Model.SelectedActor.ActorName</h2>
+<div>Fee: @Model.SelectedActor.ActorFee</div>
 
+<div>
+    <h3>Starring in:</h3>
+    @foreach(var film in Model.StarFilms)
+    { 
+        <a href="/Film/Details/@film.FilmId">@film.FilmName</a><br />
+    }
+</div>

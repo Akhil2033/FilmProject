@@ -12,5 +12,13 @@
 <h2>@Model.SelectedFilm.FilmName</h2>
 <div>Director: @Model.SelectedFilm.DirectorName</div>
 <div>Year: @Model.SelectedFilm.FilmYear</div>
-<div>Plot:@Model.SelectedFilm.FilmPlot</div>
-<div>Studio: @Model.SelectedFilm.StudioId</div>
+<div>Plot: @Model.SelectedFilm.FilmPlot</div>
+<div>Studio: @Model.SelectedFilm.StudioName</div>
+
+<div>
+    <h2>Actors starring in...@Model.SelectedFilm.FilmName</h2>
+    @foreach(var actor in Model.AssociatedActors) 
+    { 
+        <a href="/Actor/Details/@actor.ActorId">@actor.ActorName</a><br />
+    }
+</div>

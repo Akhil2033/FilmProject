@@ -33,6 +33,31 @@ namespace Film_Passion_Project.Controllers
             return ActorDtos;
         }
 
+        /// <summary>
+        /// Content: all Actors in the database,associated with films
+        /// </summary>
+        /// <returns></returns>
+        // GET: api/ActorData/ListActorsforFilm/1
+        [HttpGet]
+        [ResponseType(typeof(ActorDto))]
+        public IHttpActionResult ListActorsForFilm(int id)
+        {
+            List<Actor> Actors = db.Actors.Where(
+                a=>a.Films.Any(
+                    f=>f.FilmId == id)
+                ).ToList();
+            List<ActorDto> ActorDtos = new List<ActorDto>();
+
+            Actors.ForEach(a => ActorDtos.Add(new ActorDto()
+            {
+                ActorId = a.ActorId,
+                ActorName = a.ActorName,
+                ActorFee = a.ActorFee,
+            }));
+
+            return Ok(ActorDtos);
+        }
+
         // GET: api/ActorData/FindActor/5
         [ResponseType(typeof(Actor))]
         [HttpGet]

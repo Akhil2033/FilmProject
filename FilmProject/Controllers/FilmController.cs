@@ -59,6 +59,13 @@ namespace Film_Passion_Project.Controllers
             ViewModel.SelectedFilm = SelectedFilm;
             Debug.WriteLine("Film received: ");
             Debug.WriteLine(SelectedFilm.FilmName);
+
+            //show associated actors with this film
+            url = "actordata/listactorsforfilm/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<ActorDto> AssociatedActors = response.Content.ReadAsAsync<IEnumerable<ActorDto>>().Result;
+
+            ViewModel.AssociatedActors = AssociatedActors;
             return View(ViewModel);
         }
 

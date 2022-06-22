@@ -20,7 +20,7 @@ namespace Film_Passion_Project.Controllers
         // GET: api/FilmData/ListFilms
         [HttpGet]
         [ResponseType(typeof(FilmDto))]
-        public IEnumerable<FilmDto> ListFilms()
+        public IHttpActionResult ListFilms()
         {
             List<Film> Films = db.Films.ToList();
             List<FilmDto> FilmDtos = new List<FilmDto>();
@@ -36,7 +36,7 @@ namespace Film_Passion_Project.Controllers
                 StudioName = f.Studio.StudioName
             }));
 
-            return FilmDtos;
+            return Ok(FilmDtos);
         }
 
 
@@ -44,7 +44,7 @@ namespace Film_Passion_Project.Controllers
         [HttpGet]
         [ResponseType(typeof(FilmDto))]
 
-        public IEnumerable<FilmDto> ListFilmsForStudios(int id)
+        public IHttpActionResult ListFilmsForStudios(int id)
         {
             List<Film> Films = db.Films.Where(f=>f.Studio.StudioId==id).ToList();
             List<FilmDto> FilmDtos = new List<FilmDto>();
@@ -60,7 +60,35 @@ namespace Film_Passion_Project.Controllers
                 StudioName = f.Studio.StudioName
             }));
 
-            return FilmDtos;
+            return Ok(FilmDtos);
+        }
+
+
+        // GET: api/FilmData/ListFilmsForActor/1
+        [HttpGet]
+        [ResponseType(typeof(FilmDto))]
+
+        public IHttpActionResult ListFilmsForActors(int id)
+        {
+            //All films where actors match with film id
+            List<Film> Films = db.Films.Where(f => f.Actors.Any(
+                a=>a.ActorId==id
+                )).ToList();
+            
+            List<FilmDto> FilmDtos = new List<FilmDto>();
+
+            Films.ForEach(f => FilmDtos.Add(new FilmDto()
+            {
+                FilmId = f.FilmId,
+                FilmName = f.FilmName,
+                FilmYear = f.FilmYear,
+                DirectorName = f.DirectorName,
+                FilmPlot = f.FilmPlot,
+                StudioId = f.Studio.StudioId,
+                StudioName = f.Studio.StudioName
+            }));
+
+            return Ok(FilmDtos);
         }
 
         // GET: api/FilmData/FindFilm/5

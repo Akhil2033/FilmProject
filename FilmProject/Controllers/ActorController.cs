@@ -38,6 +38,7 @@ namespace Film_Passion_Project.Controllers
         // GET: Actor/Details/5
         public ActionResult Details(int id)
         {
+            DetailsActors ViewModel = new DetailsActors();
             //objective: communicate with Actor data api to retreive details of the actor
             //curl https://localhost:44302/api/ActorData/FindActor/{id}
 
@@ -45,7 +46,18 @@ namespace Film_Passion_Project.Controllers
             HttpResponseMessage response = client.GetAsync(url).Result;
 
             ActorDto selectedActor = response.Content.ReadAsAsync<ActorDto>().Result;
-            return View(selectedActor);
+
+            ViewModel.SelectedActor = selectedActor;
+
+
+            //show all films starring this actor
+            url = "filmdata/listfilmsforactors/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<FilmDto> StarFilms = response.Content.ReadAsAsync<IEnumerable<FilmDto>>().Result;
+
+            ViewModel.StarFilms = StarFilms;
+
+            return View(ViewModel);
 
         }
         public ActionResult Error()

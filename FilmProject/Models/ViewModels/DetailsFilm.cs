@@ -9,5 +9,6 @@ namespace FilmProject.Models.ViewModels
     {
         public FilmDto SelectedFilm { get; set; }
         public IEnumerable<StudioDto> StudioProd { get; set; }
+        public IEnumerable<ActorDto> AssociatedActors { get; set; }
     }
 }
