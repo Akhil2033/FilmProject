@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>New Actor</h2>
+<form action="/Actor/Create" method="post">
+    <div>
+        <label>Name:</label> <input type="text" name="ActorName" />
+    </div>
+    <div>
+        <label>Fee:</label> <input type="number" name="ActorFee" />
+    </div>
+    <div>
+        <input type="submit" value="Add Actor" />
+    </div>
+</form>
+

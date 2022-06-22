@@ -1,0 +1,16 @@
+﻿@model FilmProject.Models.ViewModels.DetailsFilm
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<a href="/Film/List">Go back to List</a>
+<br />
+<a href="/Film/Edit/@Model.SelectedFilm.FilmId">Update</a>
+<br/>
+<a style="color:#ff0000"; href="/Film/DeleteConfirm/@Model.SelectedFilm.FilmId">Delete</a>
+<h2>@Model.SelectedFilm.FilmName</h2>
+<div>Director: @Model.SelectedFilm.DirectorName</div>
+<div>Year: @Model.SelectedFilm.FilmYear</div>
+<div>Plot:@Model.SelectedFilm.FilmPlot</div>
+<div>Studio: @Model.SelectedFilm.StudioId</div>

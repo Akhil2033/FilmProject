@@ -1,0 +1,12 @@
+﻿@model IEnumerable<FilmProject.Models.ActorDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Actors</h2>
+@foreach (var actor in Model)
+{
+    <h2><a href="/Actor/Details/@actor.ActorId">@actor.ActorName</h2>
+    <div>Salary:@actor.ActorFee</div>
+}
+

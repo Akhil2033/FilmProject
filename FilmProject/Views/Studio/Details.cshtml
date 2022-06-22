@@ -1,0 +1,22 @@
+﻿@model FilmProject.Models.ViewModels.DetailsStudios
+
+@{
+    ViewBag.Title = "View";
+}
+
+<a href="/Studio/List">Go back to List</a>
+<br />
+@*<a href="/Studio/Edit/@Model.SelectedStudio.StudioId">Update</a>*@
+<br />
+
+<h2>@Model.SelectedStudio.StudioName</h2>
+<div>Description: @Model.SelectedStudio.StudioDesc</div>
+
+<div style="margin-top:100px;">
+    <h3>Films related to this Studio</h3>
+    @foreach(var film in Model.RelatedFilms)
+    { 
+        <a href="/Film/Details/@film.FilmId">@film.FilmName</a>
+    }
+
+</div>

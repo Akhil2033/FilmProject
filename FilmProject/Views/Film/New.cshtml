@@ -1,0 +1,34 @@
+﻿@model IEnumerable<FilmProject.Models.StudioDto>
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Film</h2>
+<form action="/Film/Create" method="post">
+    <div>
+        <label>Name:</label> <input type="text" name="FilmName" />
+    </div>
+    <div>
+        <label>Year:</label> <input type="number" name="FilmYear" />
+    </div>
+    <div>
+        <label>Director:</label> <input type="text" name="DirectorName" />
+    </div>
+    <div>
+        <label>Plot:</label> <textarea name="plot" rows="5" cols="30"></textarea>
+    </div>
+    <div>
+        <label>Studio:</label>
+        <select name="StudioId">
+            @foreach (var studio in Model)
+            {
+                <option value="@studio.StudioId">@studio.StudioName</option>
+            }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Add Film" />
+    </div>
+
+</form>
+

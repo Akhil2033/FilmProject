@@ -1,0 +1,37 @@
+﻿@model FilmProject.Models.ViewModels.UpdateFilm
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Film</h2>
+<form action="/Film/Update/@Model.SelectedFilm.FilmId" method="POST">
+    <div style="display:none">
+        <input type="text" name="FilmId" value="@Model.SelectedFilm.FilmId" />
+    </div>
+    <div>
+        <label>Name:</label> <input type="text" name="FilmName" value="@Model.SelectedFilm.FilmName" />
+    </div>
+    <div>
+        <label>Year:</label> <input type="number" name="FilmYear" value="@Model.SelectedFilm.FilmYear"/>
+    </div>
+    <div>
+        <label>Director:</label> <input type="text" name="DirectorName"  value="@Model.SelectedFilm.DirectorName" />
+    </div>
+    <div>
+        <label>Plot:</label> <textarea name="plot" rows="5" cols="30"  value="@Model.SelectedFilm.FilmPlot"></textarea>
+    </div>
+    <div>
+        <label>Studio ID:</label>
+        <select name="StudioId">
+            @foreach (var studio in Model.StudioOptions)
+            {
+                <option value="@studio.StudioId">@studio.StudioName</option>
+            }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Update Film" />
+    </div>
+
+</form>
+
