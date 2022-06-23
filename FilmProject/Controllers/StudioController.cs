@@ -120,11 +120,11 @@ namespace Film_Passion_Project.Controllers
 
         }
 
-        // POST: Studio/Edit/5
+        // POST: Studio/Update/5
         [HttpPost]
         public ActionResult Update(int id, Studio studio)
         {
-            string url = "studiodata/findstudio/" + id;
+            string url = "studiodata/updatestudio/" + id;
             string jsonpayload = jss.Serialize(studio);
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
@@ -155,7 +155,7 @@ namespace Film_Passion_Project.Controllers
             string url = "studiodata/deletestudio/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
-            HttpResponseMessage response = client.GetAsync(url).Result;
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
 
             if (response.IsSuccessStatusCode)
             {

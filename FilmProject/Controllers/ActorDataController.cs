@@ -145,7 +145,7 @@ namespace Film_Passion_Project.Controllers
             db.Actors.Remove(actor);
             db.SaveChanges();
 
-            return Ok(actor);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)

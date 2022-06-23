@@ -1,7 +1,20 @@
-﻿@model Film_Passion_Project.Models.ViewModels.UpdateActor
+﻿@model FilmProject.Models.ViewModels.UpdateActor
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
-
+<h2>Update Actor</h2>
+<form action="/Actor/Update/@Model.SelectedActor.ActorId" method="post">
+    <div style="display:none">
+        <input type="text" name="StudioId" value="@Model.SelectedActor.ActorId" />
+    </div>
+    <div>
+        <label>Name:</label> <input type="text" name="ActorName" value="@Model.SelectedActor.ActorName" />
+    </div>
+    <div>
+        <label>Fee:</label> <input type="text" name="ActorFee" value="@Model.SelectedActor.ActorFee" />
+    </div>
+    <div>
+        <input type="submit" value="Update Actor" />
+    </div>
+</form>

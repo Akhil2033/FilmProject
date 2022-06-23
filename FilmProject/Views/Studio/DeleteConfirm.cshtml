@@ -1,0 +1,12 @@
+﻿@model FilmProject.Models.StudioDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this film's data</h2>
+<a href="/Studio/List">Cancel</a>
+<h3>@Model.StudioName</h3>
+<div>BIO: @Model.StudioDesc</div>
+<form action="/Studio/Delete/@Model.StudioId" method="post">
+    <input type="submit" value="Confirm Delete" />
+</form>

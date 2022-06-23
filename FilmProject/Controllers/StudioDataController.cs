@@ -54,7 +54,7 @@ namespace Film_Passion_Project.Controllers
             return Ok(StudioDto);
         }
 
-        // POST: api/StudioData/UpdateAnimal/5
+        // POST: api/StudioData/UpdateStudio/5
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdateStudio(int id, Studio studio)

@@ -1,4 +1,5 @@
 ﻿@model FilmProject.Models.ViewModels.DetailsActors
+
 @{
     ViewBag.Title = "Details";
 }
@@ -6,6 +7,8 @@
 <a href="/Actor/List">Go back to list</a>
 <br />
 <a href="/Actor/Edit/@Model.SelectedActor.ActorId">Update</a>
+<br />
+<a style="color:#ff0000"; href="/Actor/DeleteConfirm/@Model.SelectedActor.ActorId">Delete</a>
 <h2>@Model.SelectedActor.ActorName</h2>
 <div>Fee: @Model.SelectedActor.ActorFee</div>
 

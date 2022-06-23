@@ -105,14 +105,14 @@ namespace Film_Passion_Project.Controllers
             HttpResponseMessage response = client.GetAsync(url).Result;
             ActorDto SelectedActor = response.Content.ReadAsAsync<ActorDto>().Result;
             ViewModel.SelectedActor = SelectedActor;
-            return View();
+            return View(ViewModel);
         }
 
-        // POST: Actor/Edit/5
+        // POST: Actor/Update/5
         [HttpPost]
         public ActionResult Update(int id, Actor actor)
         {
-            string url = "actordata/findactor/" + id;
+            string url = "ActorData/UpdateActor/" + id;
             string jsonpayload = jss.Serialize(actor);
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
@@ -128,7 +128,7 @@ namespace Film_Passion_Project.Controllers
 
         }
 
-        // GET: Actor/Delete/5
+        // GET: Actor/DeleteConfirm/5
         public ActionResult DeleteConfirm(int id)
         {
             string url = "actordata/findactor/" + id;
@@ -144,7 +144,7 @@ namespace Film_Passion_Project.Controllers
             string url = "actordata/deleteactor/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
-            HttpResponseMessage response = client.GetAsync(url).Result;
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
 
             if (response.IsSuccessStatusCode)
             {

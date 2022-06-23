@@ -1,0 +1,13 @@
+﻿@model FilmProject.Models.ActorDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure do you want to delete this actor?</h2>
+<a href="/Actor/List">Cancel</a>
+<h2>@Model.ActorName</h2>
+<div>Fee: @Model.ActorFee</div>
+<form action="/Actor/Delete/@Model.ActorId" method="post">
+    <input type="submit" value="Confirm Delete" />
+</form>
+

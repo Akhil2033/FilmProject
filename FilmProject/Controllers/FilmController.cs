@@ -169,7 +169,7 @@ namespace Film_Passion_Project.Controllers
             string url = "filmdata/deletefilm/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
-            HttpResponseMessage response = client.GetAsync(url).Result;
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
 
             if (response.IsSuccessStatusCode)
             {

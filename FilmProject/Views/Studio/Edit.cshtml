@@ -1,7 +1,21 @@
-﻿
+﻿@model FilmProject.Models.ViewModels.UpdateStudio
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Update Studio</h2>
+<form action="/Studio/Update/@Model.SelectedStudio.StudioId" method="post">
+    <div style="display:none">
+        <input type="text" name="StudioId" value="@Model.SelectedStudio.StudioId" />
+    </div>
+    <div>
+        <label>Name:</label> <input type="text" name="StudioName" value="@Model.SelectedStudio.StudioName" />
+    </div>
+    <div>
+        <label>BIO:</label> <input type="text" name="StudioDesc" value="@Model.SelectedStudio.StudioDesc" />
+    </div>
+    <div>
+        <input type="submit" value="Update Studio" />
+    </div>
+</form>
 
