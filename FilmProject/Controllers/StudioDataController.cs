@@ -10,7 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using FilmProject.Models;
 
-namespace Film_Passion_Project.Controllers
+namespace FilmProject.Controllers
 {
     public class StudioDataController : ApiController
     {

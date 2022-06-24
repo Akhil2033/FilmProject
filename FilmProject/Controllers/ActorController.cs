@@ -9,7 +9,7 @@ using FilmProject.Models;
 using FilmProject.Models.ViewModels;
 using System.Web.Script.Serialization;
 
-namespace Film_Passion_Project.Controllers
+namespace FilmProject.Controllers
 {
     public class ActorController : Controller
     {
@@ -101,7 +101,8 @@ namespace Film_Passion_Project.Controllers
         {
             UpdateActor ViewModel = new UpdateActor();
 
-            string url = "actordata/findactor/" + id;
+            string url = "ActorData/FindActor/" + id;
+
             HttpResponseMessage response = client.GetAsync(url).Result;
             ActorDto SelectedActor = response.Content.ReadAsAsync<ActorDto>().Result;
             ViewModel.SelectedActor = SelectedActor;
@@ -112,11 +113,18 @@ namespace Film_Passion_Project.Controllers
         [HttpPost]
         public ActionResult Update(int id, Actor actor)
         {
+            Debug.WriteLine("its working");
+
             string url = "ActorData/UpdateActor/" + id;
+            Debug.WriteLine(url);
             string jsonpayload = jss.Serialize(actor);
             HttpContent content = new StringContent(jsonpayload);
+            Debug.WriteLine(content);
+
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
+            Debug.WriteLine(response);
+
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("List");

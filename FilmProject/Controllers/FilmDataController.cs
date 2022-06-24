@@ -11,7 +11,7 @@ using System.Web.Http.Description;
 using FilmProject.Models;
 using System.Diagnostics;
 
-namespace Film_Passion_Project.Controllers
+namespace FilmProject.Controllers
 {
     public class FilmDataController : ApiController
     {

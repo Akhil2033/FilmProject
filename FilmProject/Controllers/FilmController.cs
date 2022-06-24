@@ -9,7 +9,7 @@ using FilmProject.Models;
 using FilmProject.Models.ViewModels;
 using System.Web.Script.Serialization;
 
-namespace Film_Passion_Project.Controllers
+namespace FilmProject.Controllers
 {
     public class FilmController : Controller
     {

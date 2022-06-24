@@ -9,8 +9,9 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FilmProject.Models;
+using System.Diagnostics;
 
-namespace Film_Passion_Project.Controllers
+namespace FilmProject.Controllers
 {
     public class ActorDataController : ApiController
     {
@@ -84,6 +85,8 @@ namespace Film_Passion_Project.Controllers
         [HttpPost]
         public IHttpActionResult UpdateActor(int id, Actor actor)
         {
+            Debug.WriteLine("I have reached the update Actor method");
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
