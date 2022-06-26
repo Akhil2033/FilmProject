@@ -25,6 +25,6 @@ This database tracks details about:
 
 
 ## Future Updates
--- Attaching suitable images to each item
--- redesigning the whole frontend interface.
--- possible changes in the database structures.
+- Attaching suitable images to each item
+- redesigning the whole frontend interface.
+- possible changes in the database structures.
