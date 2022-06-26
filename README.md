@@ -6,6 +6,11 @@ This database tracks details about:
 2. FILMS
 3. ACTORS
 
+## Project approach
+- Coding is done using C# ASP.Net MVC architecture pattern
+- Used Code-First Migrations to represent the database.
+- Used LINQ approach to perform CRUD operations.
+
 ## DATABASE
 **This project's database has 3 tables:**
 1. Studio
