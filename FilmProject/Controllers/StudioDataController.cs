@@ -15,8 +15,17 @@ namespace FilmProject.Controllers
     public class StudioDataController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: api/StudioData/ListStudios
+        
+        /// <summary>
+        /// Returns all studios in the system.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all studios in the database
+        /// </returns>
+        /// <example>
+        /// GET: api/StudioData/ListStudios
+        /// </example>
         [HttpGet]
         public IEnumerable<StudioDto> ListStudios()
         {
@@ -32,8 +41,20 @@ namespace FilmProject.Controllers
 
             return StudioDtos;
         }
-
-        // GET: api/StudioData/FindStudio/5
+        
+        /// <summary>
+        /// Returns all studios in the system.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: A studio in the system matching up to the studio id primary key
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <param name="id">The primary key of the studio</param>
+        /// <example>
+        /// GET: api/StudioData/FindStudio/5
+        /// </example>
         [ResponseType(typeof(Studio))]
         [HttpGet]
         public IHttpActionResult FindStudio(int id)
@@ -53,8 +74,23 @@ namespace FilmProject.Controllers
 
             return Ok(StudioDto);
         }
-
-        // POST: api/StudioData/UpdateStudio/5
+        
+        /// <summary>
+        /// Updates a particular studio in the system with POST Data input
+        /// </summary>
+        /// <param name="id">Represents the Studio ID primary key</param>
+        /// <param name="film">JSON FORM DATA of a studio</param>
+        /// <returns>
+        /// HEADER: 204 (Success, No Content Response)
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// or
+        /// HEADER: 404 (Not Found)
+        /// </returns>
+        /// <example>
+        /// POST: api/StudioData/UpdateStudio/5
+        /// FORM DATA: Actor JSON Object
+        /// </example>
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdateStudio(int id, Studio studio)
@@ -89,8 +125,20 @@ namespace FilmProject.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
-        // POST: api/StudioData/AddStudio
+        
+        /// <summary>
+        /// Adds a Studio to the system
+        /// </summary>
+        /// <param name="film">JSON FORM DATA of a studio</param>
+        /// <returns>
+        /// HEADER: 201 (Created)
+        /// CONTENT: studio_id and studio data
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        /// <example>
+        /// POST: api/StudioData/AddStudio
+        /// FORM DATA: Actor JSON Object
         [ResponseType(typeof(Studio))]
         [HttpPost]
         public IHttpActionResult AddStudio(Studio studio)
@@ -106,7 +154,19 @@ namespace FilmProject.Controllers
             return CreatedAtRoute("DefaultApi", new { id = studio.StudioId }, studio);
         }
 
+        /// <summary>
+        /// Deletes a studio from the system by it's ID.
+        /// </summary>
+        /// <param name="id">The primary key of the studio</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
         // POST: api/StudioData/DeleteStudio/5
+        /// FORM DATA: (empty)
+        /// </example>
         [ResponseType(typeof(Studio))]
         [HttpPost]
         public IHttpActionResult DeleteStudio(int id)
