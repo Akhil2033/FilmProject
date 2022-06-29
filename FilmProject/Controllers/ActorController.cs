@@ -25,7 +25,7 @@ namespace FilmProject.Controllers
         // GET: Actor/List
         public ActionResult List()
         {
-            //OBJECTIVE: COMMUNICATE WITH OUR aCTOR DATA API TO RETRIEVE A LIST OF ACTORS
+            //OBJECTIVE: COMMUNICATE WITH ACTOR DATA API TO RETRIEVE A LIST OF ACTORS
             //curl https://localhost:44302/api/ActorData/ListActors
             string url = "ActorData/ListActors";
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -65,7 +65,7 @@ namespace FilmProject.Controllers
             return View();
         }
 
-        // GET: Actor/Create
+        // GET: Actor/New
         public ActionResult New()
         {
             return View();
