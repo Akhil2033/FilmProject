@@ -121,7 +121,7 @@ namespace FilmProject.Controllers
         /// </summary>
         /// <returns>
         /// HEADER: 200 (OK)
-        /// CONTENT: An film in the system matching up to the film id primary key
+        /// CONTENT: A film in the system matching up to the film id primary key
         /// or
         /// HEADER: 404 (NOT FOUND)
         /// </returns>
