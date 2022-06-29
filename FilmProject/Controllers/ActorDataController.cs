@@ -47,7 +47,9 @@ namespace FilmProject.Controllers
         /// <summary>
         /// Content: all Actors in the database,associated with films
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// Content: all actors associated with a film
+        /// </returns>
         /// <example>
         /// GET: api/ActorData/ListActorsforFilm/1
         /// </example>
