@@ -17,7 +17,16 @@ namespace FilmProject.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/FilmData/ListFilms
+        /// <summary>
+        /// Returns all films in the system.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all actors in the database
+        /// </returns>
+        /// <example>
+        /// GET: api/FilmData/ListFilms
+        /// </example>
         [HttpGet]
         [ResponseType(typeof(FilmDto))]
         public IHttpActionResult ListFilms()
@@ -38,9 +47,17 @@ namespace FilmProject.Controllers
 
             return Ok(FilmDtos);
         }
+        
+        /// <summary>
+        /// Content: all Films in the database,associated with Studios
+        /// </summary>
+        /// <returns>
+        /// list of films associated with a studio
+        /// </returns>
+        /// <example>
+        /// GET: api/FilmData/ListFilmsForStudios/2
+        /// </example>
 
-
-        // GET: api/FilmData/ListFilmsForStudios/2
         [HttpGet]
         [ResponseType(typeof(FilmDto))]
 
@@ -63,8 +80,16 @@ namespace FilmProject.Controllers
             return Ok(FilmDtos);
         }
 
-
-        // GET: api/FilmData/ListFilmsForActor/1
+        /// <summary>
+        /// Content: all Films in the database,associated with actors
+        /// </summary>
+        /// <returns>
+        /// list of actors attached to a film
+        /// </returns>
+        /// <example>
+        /// GET: api/FilmData/ListFilmsForActor/1
+        /// </example>
+        
         [HttpGet]
         [ResponseType(typeof(FilmDto))]
 
@@ -90,8 +115,20 @@ namespace FilmProject.Controllers
 
             return Ok(FilmDtos);
         }
-
-        // GET: api/FilmData/FindFilm/5
+        
+         /// <summary>
+        /// Returns all films in the system.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: An film in the system matching up to the film id primary key
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <param name="id">The primary key of the film</param>
+        /// <example>
+        /// GET: api/FilmData/FindFilm/5
+        /// </example>
         [ResponseType(typeof(Film))]
         [HttpGet]
         public IHttpActionResult FindFilm(int id)
@@ -115,8 +152,23 @@ namespace FilmProject.Controllers
             return Ok(FilmDto);
         }
 
-
-        // POST: api/FilmData/UpdateFilm/5
+        /// <summary>
+        /// Updates a particular film in the system with POST Data input
+        /// </summary>
+        /// <param name="id">Represents the Film ID primary key</param>
+        /// <param name="film">JSON FORM DATA of an film</param>
+        /// <returns>
+        /// HEADER: 204 (Success, No Content Response)
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// or
+        /// HEADER: 404 (Not Found)
+        /// </returns>
+        /// <example>
+        /// POST: api/FilmData/UpdateFilm/5
+        /// FORM DATA: Actor JSON Object
+        /// </example>
+        
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdateFilm(int id, Film film)
@@ -152,8 +204,21 @@ namespace FilmProject.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
+        
+        /// <summary>
+        /// Adds an film to the system
+        /// </summary>
+        /// <param name="film">JSON FORM DATA of an actor</param>
+        /// <returns>
+        /// HEADER: 201 (Created)
+        /// CONTENT: film_id and film data
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        /// <example>
         // POST: api/FilmData/AddFilm
+        /// FORM DATA: Actor JSON Object
+        /// </example>
         [ResponseType(typeof(Film))]
         [HttpPost]
         public IHttpActionResult AddFilm(Film film)
@@ -168,8 +233,20 @@ namespace FilmProject.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = film.FilmId }, film);
         }
-
-        // POST: api/FilmData/DeleteFilm/5
+        
+        /// <summary>
+        /// Deletes an film from the system by it's ID.
+        /// </summary>
+        /// <param name="id">The primary key of the film</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// POST: api/FilmData/DeleteFilm/5
+        /// FORM DATA: (empty)
+        /// </example>
         [ResponseType(typeof(Film))]
         [HttpPost]
         public IHttpActionResult DeleteFilm(int id)
