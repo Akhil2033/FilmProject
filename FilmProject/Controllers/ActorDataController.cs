@@ -28,7 +28,6 @@ namespace FilmProject.Controllers
         /// GET: api/FilmData/ListActors
         /// </example>
 
-        // GET: api/ActorData/ListActors
         [HttpGet]
         public IEnumerable<ActorDto> ListActors()
         {
