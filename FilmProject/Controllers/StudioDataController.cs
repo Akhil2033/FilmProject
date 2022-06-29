@@ -89,7 +89,7 @@ namespace FilmProject.Controllers
         /// </returns>
         /// <example>
         /// POST: api/StudioData/UpdateStudio/5
-        /// FORM DATA: Actor JSON Object
+        /// FORM DATA: Studio JSON Object
         /// </example>
         [ResponseType(typeof(void))]
         [HttpPost]
@@ -138,7 +138,7 @@ namespace FilmProject.Controllers
         /// </returns>
         /// <example>
         /// POST: api/StudioData/AddStudio
-        /// FORM DATA: Actor JSON Object
+        /// FORM DATA: Studio JSON Object
         [ResponseType(typeof(Studio))]
         [HttpPost]
         public IHttpActionResult AddStudio(Studio studio)
