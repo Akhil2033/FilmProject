@@ -156,7 +156,7 @@ namespace FilmProject.Controllers
         /// Updates a particular film in the system with POST Data input
         /// </summary>
         /// <param name="id">Represents the Film ID primary key</param>
-        /// <param name="film">JSON FORM DATA of an film</param>
+        /// <param name="film">JSON FORM DATA of a film</param>
         /// <returns>
         /// HEADER: 204 (Success, No Content Response)
         /// or
@@ -166,7 +166,7 @@ namespace FilmProject.Controllers
         /// </returns>
         /// <example>
         /// POST: api/FilmData/UpdateFilm/5
-        /// FORM DATA: Actor JSON Object
+        /// FORM DATA: Film JSON Object
         /// </example>
         
         [ResponseType(typeof(void))]
@@ -206,9 +206,9 @@ namespace FilmProject.Controllers
         }
         
         /// <summary>
-        /// Adds an film to the system
+        /// Adds a film to the system
         /// </summary>
-        /// <param name="film">JSON FORM DATA of an actor</param>
+        /// <param name="film">JSON FORM DATA of a film</param>
         /// <returns>
         /// HEADER: 201 (Created)
         /// CONTENT: film_id and film data
@@ -217,7 +217,7 @@ namespace FilmProject.Controllers
         /// </returns>
         /// <example>
         // POST: api/FilmData/AddFilm
-        /// FORM DATA: Actor JSON Object
+        /// FORM DATA: Film JSON Object
         /// </example>
         [ResponseType(typeof(Film))]
         [HttpPost]
@@ -235,7 +235,7 @@ namespace FilmProject.Controllers
         }
         
         /// <summary>
-        /// Deletes an film from the system by it's ID.
+        /// Deletes a film from the system by it's ID.
         /// </summary>
         /// <param name="id">The primary key of the film</param>
         /// <returns>
