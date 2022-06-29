@@ -16,6 +16,17 @@ namespace FilmProject.Controllers
     public class ActorDataController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        
+        /// <summary>
+        /// Returns all actors in the system.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all actors in the database
+        /// </returns>
+        /// <example>
+        /// GET: api/FilmData/ListActors
+        /// </example>
 
         // GET: api/ActorData/ListActors
         [HttpGet]
@@ -38,7 +49,9 @@ namespace FilmProject.Controllers
         /// Content: all Actors in the database,associated with films
         /// </summary>
         /// <returns></returns>
-        // GET: api/ActorData/ListActorsforFilm/1
+        /// <example>
+        /// GET: api/ActorData/ListActorsforFilm/1
+        /// </example>
         [HttpGet]
         [ResponseType(typeof(ActorDto))]
         public IHttpActionResult ListActorsForFilm(int id)
@@ -58,8 +71,20 @@ namespace FilmProject.Controllers
 
             return Ok(ActorDtos);
         }
-
-        // GET: api/ActorData/FindActor/5
+        
+        /// <summary>
+        /// Returns all actors in the system.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: An actor in the system matching up to the actor ID primary key
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <param name="id">The primary key of the actor</param>
+        /// <example>
+        /// GET: api/ActorData/FindActor/5
+        /// </example>
         [ResponseType(typeof(Actor))]
         [HttpGet]
         public IHttpActionResult FindActor(int id)
@@ -80,7 +105,22 @@ namespace FilmProject.Controllers
             return Ok(ActorDto);
         }
 
-        // POST: api/ActorData/UpdateActor/5
+        /// <summary>
+        /// Updates a particular actor in the system with POST Data input
+        /// </summary>
+        /// <param name="id">Represents the Actor ID primary key</param>
+        /// <param name="actor">JSON FORM DATA of an actor</param>
+        /// <returns>
+        /// HEADER: 204 (Success, No Content Response)
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// or
+        /// HEADER: 404 (Not Found)
+        /// </returns>
+        /// <example>
+        /// POST: api/ActorData/UpdateActor/5
+        /// FORM DATA: Actor JSON Object
+        /// </example>
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdateActor(int id, Actor actor)
@@ -117,8 +157,21 @@ namespace FilmProject.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
-        // POST: api/ActorData/AddActor
+        
+        /// <summary>
+        /// Adds an actor to the system
+        /// </summary>
+        /// <param name="actor">JSON FORM DATA of an actor</param>
+        /// <returns>
+        /// HEADER: 201 (Created)
+        /// CONTENT: Actor_id, Actor_name, actor_salary
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        /// <example>
+        /// POST: api/ActorData/AddActor
+        /// FORM DATA: Actor JSON Object
+        /// </example>
         [ResponseType(typeof(Actor))]
         [HttpPost]
         public IHttpActionResult AddActor(Actor actor)
@@ -133,8 +186,21 @@ namespace FilmProject.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = actor.ActorId }, actor);
         }
+        
+        /// <summary>
+        /// Deletes an actor from the system by it's ID.
+        /// </summary>
+        /// <param name="id">The primary key of the actor</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// POST: api/ActorData/DeleteActor/5
+        /// FORM DATA: (empty)
+        /// </example>
 
-        // POST: api/ActorData/DeleteActor/5
         [ResponseType(typeof(Actor))]
         [HttpPost]
         public IHttpActionResult DeleteActor(int id)
